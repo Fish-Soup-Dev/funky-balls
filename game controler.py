@@ -1,9 +1,9 @@
 import pygame
 import math
 
-RED = [255, 50, 20]
-GREEN = [40, 255, 60]
-BLUE = pygame.Color('blue')
+RED   = pygame.Color('  red')
+GREEN = pygame.Color('green')
+BLUE  = pygame.Color(' blue')
 BLACK = pygame.Color('black')
 WHITE = pygame.Color('white')
 
@@ -24,14 +24,14 @@ class TextPrint(object):
         self.y = 10
         self.line_height = 15
 
-    def indent(self):
-        self.x += 10
+    def indentX(self, size):
+        self.x += size
 
-    def indentY(self):
-        self.y += 10
+    def indentY(self, size):
+        self.y += size
 
-    def unindent(self):
-        self.x -= 10
+    def unindent(self, size):
+        self.x -= size
 
 pygame.init()
 pygame.joystick.init()
@@ -112,11 +112,9 @@ while running:
     textPrint.tprint(screen, "                                                     Axis y value: {:>6.3f}".format(axisY2 / 25))
     textPrint.tprint(screen, "                                                     R. Stick In value: {}".format(button2))
     textPrint.tprint(screen, "                                                     Dead zone size: {}".format(dead_zone))
-    textPrint.indentY()
+    textPrint.indentY(10)
     textPrint.tprint(screen, "Axis LT value: {:>6.3f}".format(axisT1 / 100))
-    textPrint.indentY()
-    textPrint.indentY()
-    textPrint.indentY()
+    textPrint.indentY(30)
     textPrint.tprint(screen, "Axis RT value: {:>6.3f}".format(axisT2 / 100))
 
     pygame.display.flip()
